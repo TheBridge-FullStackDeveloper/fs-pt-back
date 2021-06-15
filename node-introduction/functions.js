@@ -1,39 +1,36 @@
+// https://bit.ly/3cKjm8p
 
-console.log('> starting ...')
 const fs = require('fs')
 const tap = a => console.log(a)
 
-// 6
+// 1 ✅  6 ❌
 // mkdir & writeFile ? 
-// mkdir {recursive} ?
-
-// 1
 const message = 'Not so rookie!'
 const write = path =>
 	fs.writeFile(`./${path}`, message, (err, data) =>
 		err ? tap(err.message) : tap(data) )
 
-// 7
-// fs.stat -> Kb
-
-
-// 8
-// copy 3 backup
-
-
-// 2
+// 2 ✅
 const read = path =>
 	fs.readFile(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(data.toString() ))
 
-// 5
-// if true, write and read function wont work
-const itIsDir = path =>{
+// 5 ✅
+const itIsDir = path =>
 	fs.stat(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(data.isDirectory() ))
-}
 
-// 3 & 4
+// 7 ❌
+// fs.stat -> Kb
+const size = path =>
+	fs.stat(`./${path}`, (err, data) =>
+		err ? tap(err.message) : tap(data.size, 'k') )
+
+// 8 ❌
+const copy = path =>
+tap('> copy 3 backup')
+
+// 3 ✅ 4 ✅
 // what if it is not write or read?
 const receiveDirByCmd = () => {
 	const path = process.argv[2]
@@ -42,8 +39,13 @@ const receiveDirByCmd = () => {
 		write(path)
 	} if (trigger === 'read') {
 		read(path)
+	} if (trigger === 'copy'){
+		copy(path)
+	} if (trigger === 'size'){
+		size(path)
+	} if (trigger === 'directory'){
+		itIsDir(path)
 	}
-	itIsDir(path)
 }
 receiveDirByCmd()
 
