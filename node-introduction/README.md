@@ -1,4 +1,4 @@
-## EJERCICIOS
+## EJERCICIOSs
 
 1. Crea una función en un fichero 'functions.js' que escriba en un fichero 'test' dentro del mismo directorio donde estás el mensaje: "Not so rookie!"
 
