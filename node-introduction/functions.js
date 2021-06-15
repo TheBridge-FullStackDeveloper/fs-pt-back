@@ -3,11 +3,23 @@ console.log('> starting ...')
 const fs = require('fs')
 const tap = a => console.log(a)
 
+// 6
+// mkdir & writeFile ? 
+// mkdir {recursive} ?
+
 // 1
 const message = 'Not so rookie!'
 const write = path =>
 	fs.writeFile(`./${path}`, message, (err, data) =>
 		err ? tap(err.message) : tap(data) )
+
+// 7
+// fs.stat -> Kb
+
+
+// 8
+// copy 3 backup
+
 
 // 2
 const read = path =>
@@ -26,7 +38,11 @@ const itIsDir = path =>{
 const receiveDirByCmd = () => {
 	const path = process.argv[2]
 	const trigger = process.argv[3]
-	trigger === 'write' ? write(path) : read(path)
+	if (trigger === 'write'){
+		write(path)
+	} if (trigger === 'read') {
+		read(path)
+	}
 	itIsDir(path)
 }
 receiveDirByCmd()
