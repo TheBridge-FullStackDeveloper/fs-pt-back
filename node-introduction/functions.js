@@ -2,21 +2,23 @@ console.log('> ')
 const fs = require('fs')
 const tap = a => console.log(a)
 
+
 // 1
 const message = 'Not so rookie!'
-const createTestFile = () =>
-	fs.writeFile('./test', message, (err, data) =>
-			err ? tap(err.message) : tap(data))
-createTestFile()
+const createTestFile = path =>
+	fs.writeFile(`./${path}`, message, (err, data) =>
+		err ? tap(err.message) : readTestFile(path) )
 
 // 2
-const readTestFile = () =>
-	fs.readFile('./test', (err, data) =>
+const readTestFile = path =>
+	fs.readFile(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(data.toString() ))
-readTestFile()
+
 
 // 3
-const receiveDirByCmd = () =>
-	tap('3. hola ')
+const receiveDirByCmd = () => {
+	const input = process.argv[2]
+	createTestFile(input)
+}
 receiveDirByCmd()
 
