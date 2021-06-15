@@ -1,18 +1,22 @@
-console.log('> hola')
-
-
+console.log('> ')
 const fs = require('fs')
+const tap = a => console.log(a)
 
+// 1
+const message = 'Not so rookie!'
+const createTestFile = () =>
+	fs.writeFile('./test', message, (err, data) =>
+			err ? tap(err.message) : tap(data))
+createTestFile()
 
-//1
-const message = 'Not so rookie'
-const createtestFile = () =>{
-	fs.writeFile('./test', message, ((err, data) =>{
-			if (!err){
-					console.log(data)
-			} else {
-					console.log(err.message)
-			}
-	}))
-}
-createtestFile()
+// 2
+const readTestFile = () =>
+	fs.readFile('./test', (err, data) =>
+		err ? tap(err.message) : tap(data.toString() ))
+readTestFile()
+
+// 3
+const receiveDirByCmd = () =>
+	tap('3. hola ')
+receiveDirByCmd()
+
