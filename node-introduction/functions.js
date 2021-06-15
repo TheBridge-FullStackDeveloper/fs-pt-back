@@ -16,19 +16,26 @@ const read = path =>
 		err ? tap(err.message) : tap(data.toString() ))
 
 // 5 ✅
-const itIsDir = path =>
+const directory = path =>
 	fs.stat(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(data.isDirectory() ))
 
-// 7 ❌
-// fs.stat -> Kb
+// 7 ✅
 const size = path =>
 	fs.stat(`./${path}`, (err, data) =>
-		err ? tap(err.message) : tap(data.size, 'k') )
+		err ? tap(err.message) : console.log(data.size, 'bytes') )
 
 // 8 ❌
 const copy = path =>
-tap('> copy 3 backup')
+	tap('> copy 3 backup')
+
+// 9 ❌
+const list = path =>
+	tap('> list')
+
+// 10 ❌
+const deepList = path =>
+	tap('> deepList')
 
 // 3 ✅ 4 ✅
 // what if it is not write or read?
@@ -44,7 +51,11 @@ const receiveDirByCmd = () => {
 	} if (trigger === 'size'){
 		size(path)
 	} if (trigger === 'directory'){
-		itIsDir(path)
+		directory(path)
+	} if (trigger === 'list'){
+		list(path)
+	} if (trigger === 'deepList'){
+		deepList(path)
 	}
 }
 receiveDirByCmd()
