@@ -1,8 +1,5 @@
-
 // https://bit.ly/3cKjm8p
-// ❌ DIR: IF Created THEN Open NOT override
 // ❌ 6 bug ')' dir
-// ❌ 8 fs-extra or NCP
 
 const fs = require('fs')
 const tap = a => console.log(a)
@@ -44,7 +41,7 @@ const copy = path =>{
 	const backup_number = process.argv[4] > 0
 	const backup_dir = process.argv[5]
 	if (backup_number){
-		create(`${backup_dir}/${path}`)
+		create(`${backup_dir}/${path}`) * backup_number
 		// for (let i = 1; i < backup_number; i++){
 		// 	tap(i)
 		// 	tap(backup_number)
@@ -56,11 +53,11 @@ const copy = path =>{
 
 // 9 ❌
 const list = path =>
-	tap('> list')
+	tap('> list to be developed')
 
 // 10 ❌
 const deepList = path =>
-	tap('> deepList')
+	tap('> deepList to be developed')
 
 // 3 4
 const receiveDirByCmd = () => {
