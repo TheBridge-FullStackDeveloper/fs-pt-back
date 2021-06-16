@@ -4,32 +4,33 @@ const fs = require('fs')
 const tap = a => console.log(a)
 const message = 'Not so rookie!'
 
-// 6
+// 1 6
 // bug ')' dir
 const create = path =>{
+	const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
+	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length)
 	if (path.includes('/')){
-		const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
+		const write = (path, dir_name) =>
+		fs.writeFile(`./${dir_name}${file_name}`, message, (err, data) =>
+			err ? tap(err.message) : tap(`> writeFile: ${data}`) )
 		fs.mkdir(`./${dir_name})`, {recursive: true}, (err, data) =>
 			err ? tap(err.message) : write(path, dir_name) )
 	} else {
-		write(path, '_')
+		fs.writeFile(`./${file_name}`, message, (err, data) =>
+			err ? tap(err.message) : tap(`> writeFile: ${data}`) )
 	}
 }
-// 1
-const write = (path, dir_name) =>{
-	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length)
-	fs.writeFile(`./${dir_name}${file_name}`, message, (err, data) =>
-		err ? tap(err.message) : tap(`> writeFile: ${data}`) )
-}
+
 // 2
 const read = path =>
 	fs.readFile(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(`> read: ${data.toString()}` ))
 
+	
 // 5
 const directory = path =>
 	fs.stat(`./${path}`, (err, data) =>
-		err ? tap(err.message) : tap(`> is directory?: ${data.isDirectory()}`))
+		err ? tap(err.message) : tap(data.isDirectory() ))
 
 // 7
 const size = path =>
@@ -57,8 +58,19 @@ const copy = path =>{
 }
 
 // 9 ❌
-const list = path =>
-	tap('> list to be developed')
+const list = path => {
+	// ficheros -> # y Kb
+	// directorios -> #
+	// SOLO EN ESTE NIVEL
+	directory(path)
+
+	// tap(`> list: ${validate}`)
+	// if (validate){
+	// 	tap('doing')
+	// } else {
+	// 	tap('staph')
+	// }
+}
 
 // 10 ❌
 const deepList = path =>
