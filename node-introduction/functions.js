@@ -1,6 +1,5 @@
 // https://bit.ly/3cKjm8p
-// 
-
+const { dir } = require('console')
 const fs = require('fs')
 const tap = a => console.log(a)
 const message = 'Not so rookie!'
@@ -8,11 +7,11 @@ const message = 'Not so rookie!'
 // 1 6
 const create = (path, dir_name, file_name) =>{
 	if (path.includes('/')){
-		const write = (path, dir_name) =>
+		const write = (dir_name) =>
 		fs.writeFile(`./${dir_name}${file_name}`, message, (err, data) =>
 			err ? tap(err.message) : tap(`> writeFile: ${data}`) )
 		fs.mkdir(`./${dir_name}`, {recursive: true}, (err, data) =>
-			err ? tap(err.message) : write(path, dir_name) )
+			err ? tap(err.message) : write(dir_name) )
 	} else {
 		fs.writeFile(`./${file_name}`, message, (err, data) =>
 			err ? tap(err.message) : tap(`> writeFile: ${data}`) )
@@ -25,7 +24,7 @@ const read = path =>
 // 5
 const directory = path =>
 	fs.stat(`./${path}`, (err, data) =>
-		err ? tap(err.message) : tap(data.isDirectory()) )
+		err ? tap(err.message) : data.isDirectory() )
 // 7
 const size = path =>
 	fs.stat(`./${path}`, (err, data) =>
@@ -49,36 +48,36 @@ const copy = (file_name, backup_dir, backup_number) =>{
 
 // 9 ❌
 const list = async (path) => {
-	// ficheros -> #
-	// directorios -> #
-	// SOLO EN ESTE NIVEL -> ficheros  y Kb
-
-	// IF === TRUE
+	try{
+	// IF === TRUE ❌
 	fs.stat(`./${path}`, (err, data) =>
-		err ? tap(err.message) : tap(data.isDirectory()) )
-	
-	// TOTAL NUMBER OF DIR
+		err ? tap(err.message) : tap(data.isDirectory() ))
 
-
-	// KB IN THIS DIR
+	// KB IN THIS DIR ❌
 	fs.stat(`./${path}`, (err, data) =>
+		err ? tap(err.message) : tap(data.size) )
+
+	// TOTAL NUMBER OF FILES ❌
+	fs.readdir(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(data) )
 
-	// TOTAL NUMBER OF FILES
+	// TOTAL NUMBER OF DIR
 	fs.readdir(`./${path}`, (err, data) =>
-		err ? tap(err.message) : tap(data.length) )
+		err ? tap(err.message) : data.forEach(e => tap(e) ) ) // no permite manipular
+	
+		// ELSE 'IS NOT A DIRECTORY'
+	tap('UPSIE')
 
-	// ELSE 'IS NOT A DIRECTORY'
-
-
+	} catch (error){
+		tap(error.message)
+	}
 }
-
 // 10 ❌
 const deepList = path =>
 	tap('> deepList to be developed')
 
 // 3 4
-const receiveDirByCmd = () => {
+const start = () => {
 	const path = process.argv[2]
 	const trigger = process.argv[3]
 	const backup_dir = process.argv[5]
@@ -99,8 +98,6 @@ const receiveDirByCmd = () => {
 		list(path)
 	} if (trigger === 'deepList'){
 		deepList(path)
-	} else {
-		tap('command not found')
 	}
 }
-receiveDirByCmd()
+start()
