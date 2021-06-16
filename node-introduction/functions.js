@@ -1,11 +1,11 @@
 // https://bit.ly/3cKjm8p
+// 
 
 const fs = require('fs')
 const tap = a => console.log(a)
 const message = 'Not so rookie!'
 
 // 1 6
-// bug ')' dir
 const create = path =>{
 	const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
 	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length)
@@ -13,43 +13,38 @@ const create = path =>{
 		const write = (path, dir_name) =>
 		fs.writeFile(`./${dir_name}${file_name}`, message, (err, data) =>
 			err ? tap(err.message) : tap(`> writeFile: ${data}`) )
-		fs.mkdir(`./${dir_name})`, {recursive: true}, (err, data) =>
+		fs.mkdir(`./${dir_name}`, {recursive: true}, (err, data) =>
 			err ? tap(err.message) : write(path, dir_name) )
 	} else {
 		fs.writeFile(`./${file_name}`, message, (err, data) =>
 			err ? tap(err.message) : tap(`> writeFile: ${data}`) )
 	}
 }
-
 // 2
 const read = path =>
 	fs.readFile(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(`> read: ${data.toString()}` ))
-
-	
 // 5
 const directory = path =>
 	fs.stat(`./${path}`, (err, data) =>
-		err ? tap(err.message) : tap(data.isDirectory() ))
-
+		err ? tap(err.message) : tap(data.isDirectory()) )
 // 7
 const size = path =>
 	fs.stat(`./${path}`, (err, data) =>
-		err ? tap(err.message) : console.log(`> size:  ${data.size} bytes`) )
-
+		err ? tap(err.message) : tap(`> size:  ${data.size} bytes`) )
 // 8
-// fs-extra // promises.copyFile // is not copying, is creating
 const copy = path =>{
-	const backup_number = process.argv[4]
 	const backup_dir = process.argv[5]
+	const backup_number = process.argv[4]
+	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length) // ❌
 	if (backup_number > 0){
 		if (!backup_dir){
 			for (i = 0; i < backup_number; i++){
-				create(`_copy${i + 1}_${path}`)
+				create(`${file_name}_${i + 1}`)
 			}
 		} else {
 			for (i = 0; i < backup_number; i++){
-				create(`${backup_dir}/_copy${i + 1}_${path}`)
+				create(`${backup_dir}/${file_name}_${i + 1}`)
 			}
 		}
 	} else {
@@ -58,18 +53,29 @@ const copy = path =>{
 }
 
 // 9 ❌
-const list = path => {
-	// ficheros -> # y Kb
+const list = async (path) => {
+	// ficheros -> #
 	// directorios -> #
-	// SOLO EN ESTE NIVEL
-	directory(path)
+	// SOLO EN ESTE NIVEL -> ficheros  y Kb
 
-	// tap(`> list: ${validate}`)
-	// if (validate){
-	// 	tap('doing')
-	// } else {
-	// 	tap('staph')
-	// }
+	// IF === TRUE
+	fs.stat(`./${path}`, (err, data) =>
+		err ? tap(err.message) : tap(data.isDirectory()) )
+	
+	// TOTAL NUMBER OF DIR
+
+
+	// KB IN THIS DIR
+	fs.stat(`./${path}`, (err, data) =>
+		err ? tap(err.message) : tap(data) )
+
+	// TOTAL NUMBER OF FILES
+	fs.readdir(`./${path}`, (err, data) =>
+		err ? tap(err.message) : tap(data.length) )
+
+	// ELSE 'IS NOT A DIRECTORY'
+
+
 }
 
 // 10 ❌
