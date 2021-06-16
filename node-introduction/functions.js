@@ -1,21 +1,28 @@
+
 // https://bit.ly/3cKjm8p
+// ❌ DIR: IF Created THEN Open NOT override
+// ❌ 6 bug ')' dir
 
 const fs = require('fs')
 const tap = a => console.log(a)
-
-// 1  6 ❌ BUG ')'
 const message = 'Not so rookie!'
-const createDir = path =>{
-	const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1 )
-	fs.mkdir(`./${dir_name})`, {recursive: true}, (err, data) =>
-		err ? tap(err.message) : write(path, dir_name) )
+
+// 6
+const create = path =>{
+	if (path.includes('/')){
+		const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
+		fs.mkdir(`./${dir_name})`, {recursive: true}, (err, data) =>
+			err ? tap(err.message) : write(path, dir_name) )
+	} else {
+		write(path, '_')
+	}
 }
+// 1
 const write = (path, dir_name) =>{
 	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length)
-	fs.writeFile(`./${dir_name}/${file_name}`, message, (err, data) =>
-		err ? tap(err.message) : tap(`> writefile: ${data}`) )
+	fs.writeFile(`./${dir_name}${file_name}`, message, (err, data) =>
+		err ? tap(err.message) : tap(`> writeFile: ${data}`) )
 }
-
 // 2
 const read = path =>
 	fs.readFile(`./${path}`, (err, data) =>
@@ -32,8 +39,19 @@ const size = path =>
 		err ? tap(err.message) : console.log(`> size:  ${data.size} bytes`) )
 
 // 8 ❌
-const copy = path =>
-	tap('> copy 3 backup')
+const copy = path =>{
+	const backup_number = process.argv[4] > 0
+	const backup_dir = process.argv[5]
+	if (backup_number){
+		create(`${backup_dir}/`)
+
+
+
+		tap('Now copy path...')
+	} else {
+		tap('Backup cannot be made')
+	}
+}
 
 // 9 ❌
 const list = path =>
@@ -48,7 +66,7 @@ const receiveDirByCmd = () => {
 	const path = process.argv[2]
 	const trigger = process.argv[3]
 	if (trigger === 'write'){
-		createDir(path)
+		create(path)
 	} if (trigger === 'read') {
 		read(path)
 	} if (trigger === 'copy'){
