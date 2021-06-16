@@ -35,16 +35,21 @@ const size = path =>
 	fs.stat(`./${path}`, (err, data) =>
 		err ? tap(err.message) : console.log(`> size:  ${data.size} bytes`) )
 
-// 8 ❌ Not making multiple copies
+// 8
 // fs-extra // promises.copyFile
 const copy = path =>{
-	const backup_number = process.argv[4] > 0
+	const backup_number = process.argv[4]
+	const backup_number_val = backup_number > 0
 	const backup_dir = process.argv[5]
-	if (backup_number){
+	if (backup_number_val){
 		if (!backup_dir){
-			create(path)
+			for (i = 0; i < backup_number; i++){
+				create(`_copy${i + 1}_${path}`)
+			}
 		} else {
-			create(`${backup_dir}/${path}`)
+			for (i = 0; i < backup_number; i++){
+				create(`${backup_dir}/_copy${i + 1}_${path}`)
+			}
 		}
 	} else {
 		tap('Backup error')
