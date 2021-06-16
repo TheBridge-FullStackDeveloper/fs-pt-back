@@ -6,12 +6,12 @@ const tap = a => console.log(a)
 // 1  6 ❌
 const message = 'Not so rookie!'
 const createDir = path =>{
-	const dir_name = path.slice(0 ,path.lastIndexOf('/'))
+	const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1 )
 	fs.mkdir(`./${dir_name})`, {recursive: true}, (err, data) =>
 		err ? tap(err.message) : write(path, dir_name) )
 }
 const write = (path, dir_name) =>{
-	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length)
+	const file_name = path.slice(path.lastIndexOf('/'), path.length)
 	fs.writeFile(`./${dir_name}${file_name}`, message, (err, data) =>
 		err ? tap(err.message) : tap(`> writefile: ${data}`) )
 }
