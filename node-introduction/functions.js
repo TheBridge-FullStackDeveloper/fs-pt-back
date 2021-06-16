@@ -41,11 +41,11 @@ const copy = path =>{
 	const backup_number = process.argv[4] > 0
 	const backup_dir = process.argv[5]
 	if (backup_number){
-		create(`${backup_dir}/${path}`) * backup_number
-		// for (let i = 1; i < backup_number; i++){
-		// 	tap(i)
-		// 	tap(backup_number)
-		// }
+		if (!backup_dir){
+			create(`_${path}`)
+		} else {
+			create(`${backup_dir}/${path}`) // * ❌ backup_number
+		}
 	} else {
 		tap('Backup error')
 	}
