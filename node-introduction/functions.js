@@ -6,9 +6,7 @@ const tap = a => console.log(a)
 const message = 'Not so rookie!'
 
 // 1 6
-const create = path =>{
-	const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
-	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length)
+const create = (path, dir_name, file_name) =>{
 	if (path.includes('/')){
 		const write = (path, dir_name) =>
 		fs.writeFile(`./${dir_name}${file_name}`, message, (err, data) =>
@@ -33,10 +31,7 @@ const size = path =>
 	fs.stat(`./${path}`, (err, data) =>
 		err ? tap(err.message) : tap(`> size:  ${data.size} bytes`) )
 // 8
-const copy = path =>{
-	const backup_dir = process.argv[5]
-	const backup_number = process.argv[4]
-	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length) // ❌
+const copy = (file_name, backup_dir, backup_number) =>{
 	if (backup_number > 0){
 		if (!backup_dir){
 			for (i = 0; i < backup_number; i++){
@@ -86,12 +81,16 @@ const deepList = path =>
 const receiveDirByCmd = () => {
 	const path = process.argv[2]
 	const trigger = process.argv[3]
+	const backup_dir = process.argv[5]
+	const backup_number = process.argv[4]
+	const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
+	const file_name = path.slice(path.lastIndexOf('/') + 1, path.length)
 	if (trigger === 'write'){
-		create(path)
+		create(path, dir_name, file_name)
 	} if (trigger === 'read') {
 		read(path)
 	} if (trigger === 'copy'){
-		copy(path)
+		copy(file_name, backup_dir, backup_number)
 	} if (trigger === 'size'){
 		size(path)
 	} if (trigger === 'directory'){
@@ -100,6 +99,8 @@ const receiveDirByCmd = () => {
 		list(path)
 	} if (trigger === 'deepList'){
 		deepList(path)
+	} else {
+		tap('command not found')
 	}
 }
 receiveDirByCmd()
