@@ -1,11 +1,10 @@
 // https://bit.ly/3cKjm8p
-// ❌ 6 bug ')' dir
 
 const fs = require('fs')
 const tap = a => console.log(a)
 const message = 'Not so rookie!'
 
-// 6
+// 6 ❌ bug ')' dir
 const create = path =>{
 	if (path.includes('/')){
 		const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
@@ -36,15 +35,16 @@ const size = path =>
 	fs.stat(`./${path}`, (err, data) =>
 		err ? tap(err.message) : console.log(`> size:  ${data.size} bytes`) )
 
-// 8 ❌
+// 8 ❌ Not making multiple copies
+// fs-extra // promises.copyFile
 const copy = path =>{
 	const backup_number = process.argv[4] > 0
 	const backup_dir = process.argv[5]
 	if (backup_number){
 		if (!backup_dir){
-			create(`_${path}`)
+			create(path)
 		} else {
-			create(`${backup_dir}/${path}`) // * ❌ backup_number
+			create(`${backup_dir}/${path}`)
 		}
 	} else {
 		tap('Backup error')
@@ -80,5 +80,3 @@ const receiveDirByCmd = () => {
 	}
 }
 receiveDirByCmd()
-
-
