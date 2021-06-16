@@ -6,7 +6,7 @@ const tap = a => console.log(a)
 // 1  6 ❌
 const message = 'Not so rookie!'
 const createDir = path =>{
-	const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
+	const dir_name = path.slice(0 ,path.lastIndexOf('/'))
 	fs.mkdir(`./${dir_name})`, {recursive: true}, (err, data) =>
 		err ? tap(err.message) : write(path, dir_name) )
 }
