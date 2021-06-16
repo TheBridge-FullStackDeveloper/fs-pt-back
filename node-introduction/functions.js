@@ -4,7 +4,8 @@ const fs = require('fs')
 const tap = a => console.log(a)
 const message = 'Not so rookie!'
 
-// 6 ❌ bug ')' dir
+// 6
+// bug ')' dir
 const create = path =>{
 	if (path.includes('/')){
 		const dir_name = path.slice(0 ,path.lastIndexOf('/') + 1)
@@ -36,12 +37,11 @@ const size = path =>
 		err ? tap(err.message) : console.log(`> size:  ${data.size} bytes`) )
 
 // 8
-// fs-extra // promises.copyFile
+// fs-extra // promises.copyFile // is not copying, is creating
 const copy = path =>{
 	const backup_number = process.argv[4]
-	const backup_number_val = backup_number > 0
 	const backup_dir = process.argv[5]
-	if (backup_number_val){
+	if (backup_number > 0){
 		if (!backup_dir){
 			for (i = 0; i < backup_number; i++){
 				create(`_copy${i + 1}_${path}`)
