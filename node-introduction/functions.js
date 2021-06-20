@@ -1,6 +1,5 @@
 const fs = require("fs");
 
-/*
 // 1   Crea una función en un fichero 'functions.js' que escriba en un fichero
 //'test' dentro del mismo directorio donde estás el mensaje: "Not so rookie!"
 
@@ -94,29 +93,23 @@ const sizeOf = (route) => {
     .catch((err) => console.log("error"));
 };
 sizeOf(process.argv[2]);
-*/
+
 // 8   Haz una función en el mismo fichero que haga copias de seguridad del fichero que reciba por argumentos junto
 //    con el número de copias que debe hacer. Además se deberá indicar el directorio donde queremos que se hagan las
 //    copias de seguridad (contempla la posibilidad de que no exista el directorio). Si no se establece ningún directorio
 //    deberán realizarse en el directorio actual. Si no se especifica ningún número de copias, no hará ninguna.
 
 const fn8 = async (file, num, dir) => {
+  const backupDir = dir || __dirname;
   try {
-    const dirIsDir = fs.promises
-      .stat(dir)
-      .then((res) => res.isDirectory())
-      .catch((err) => console.log("errorDeIsDir"));
-    if (dirIsDir === true && !isNaN(num)) {
-      for (let i = 0; i > num; i++) {
-        fs.copyFile(file, `${dir}/${file}-copy${i + 1}`);
-      }
-    } else if (!isNan(num)) {
-      for (let i = 0; i > num; i++) {
-        fs.copyFile(file, `./${file}-copy${i + 1}`);
-      }
+    if (!fs.existsSync(backupDir)) {
+      await fs.promises.mkdir(backupDir, { recursive: true });
     }
-  } catch {
-    console.error("error");
+    for (let i = 0; i < num; i++) {
+      await fs.promises.copyFile(file, `${backupDir}/${file}-copy${i + 1}`);
+    }
+  } catch (error) {
+    console.error("> error: ", error.message);
   }
 };
 
