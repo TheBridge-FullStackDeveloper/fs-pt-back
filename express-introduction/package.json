@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node exercises.js",
+    "dev": "nodemon exercises.js"
   },
-  "author": "",
+  "author": "maider",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
