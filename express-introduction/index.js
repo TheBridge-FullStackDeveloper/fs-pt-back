@@ -13,6 +13,7 @@ app.get("/hello", (req, res, next) => {
   });
 });
 
+<<<<<<< HEAD
 app.post("/name", (req, res, next) => {
   const { name } = req.body;
   res.status(200).json({
@@ -23,6 +24,18 @@ app.post("/name", (req, res, next) => {
     },
   });
 });
+=======
+app.post('/name', (req, res, next) => {
+    const { name } = req.body; // aqui estoy scribiendo
+    res.status(200).json({
+        success: true,
+        data: {
+            name,
+            age: '???'
+        }
+    })
+})
+>>>>>>> 2f11185fd2795a10f2d2678c6d934b16c3166084
 
 app.use((req, res, next) => {
   console.log("> Soy el primero!");

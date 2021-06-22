@@ -12,6 +12,7 @@ mongoimport --db {databaseName} --collection {collectionName} --file {fileName}.
 
 ## Ejercicios (Nunca muestres los ObjectID)
 
+<<<<<<< HEAD
 1. Muestra los nombres y el id de los primeros 151 pokemons
 
 db.pokemos.find({},{name :1, id:1, \_id:0}).limit(151)
@@ -29,6 +30,10 @@ db.pokemos.find({type : {$all: ["Water"]}}, {name: 1, type: 1} )
 db.pokemos.find({base.Defense: $gl{100}})
 
 5. Muestra el nombre, ataque base e id del top 10 de los pokemons más fuertes ordenados de mayor a menor teniendo en cuenta el ataque base
+=======
+  1. Muestra los nombres y el id de los primeros 151 pokemons
+  2. Muestra los nombres y el tipo de todos los pokemons que sean únicamente de tipo planta (Grass)
+>>>>>>> 2f11185fd2795a10f2d2678c6d934b16c3166084
 
 db.pokemos.find().sort({"base.Attack": -1}, {name:1, "base.Attack":1, id:1, \_id:0}).limit(10)
 
