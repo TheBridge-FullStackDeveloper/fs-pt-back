@@ -14,7 +14,7 @@ app.get('/hello', (req, res, next) => {
 })
 
 app.post('/name', (req, res, next) => {
-    const { name } = req.body; // aqui estoy scribiendo
+    const { name } = req.body
     res.status(200).json({
         success: true,
         data: {

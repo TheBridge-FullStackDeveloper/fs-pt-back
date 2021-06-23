@@ -14,6 +14,7 @@ mongoimport --db {databaseName} --collection {collectionName} --file {fileName}.
 ## Ejercicios (Nunca muestres los ObjectID)
 
   1. Muestra los nombres y el id de los primeros 151 pokemons
+
   2. Muestra los nombres y el tipo de todos los pokemons que sean únicamente de tipo planta (Grass)
 
   3. Muestra los nombres y el tipo de todos los pokemons que sean tipo agua (no únicamente agua)
