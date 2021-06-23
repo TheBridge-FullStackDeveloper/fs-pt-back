@@ -1,20 +1,26 @@
 # Mongoose
 
-1- Instalar mongoose
+1- Instalar mongoose [npm](https://www.npmjs.com/package/mongoose)
 
 ```
 npm install mongoose --save
 ```
 
-2- Create mongoose connection in `configs/db.js`
+2- Crear una conexión a mongoose en `configs/db.js`
+
+En este fichero estamos conectando el nuestro servidor express con la BBDD de Mongo.
+Al método `connect()` hay que pasarle como primer parametro la URL de la BBDD donde la ultima parte del path, en este coso `/library` es el nombre de la BBDD.
 
 ```js
 const mongoose = require("mongoose");
 
 mongoose
   .connect("mongodb://localhost/library", {
-    useNewUrlParser: true,
-  })
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+})
   .then(() => console.info("> succesfully connected to mongoDB"))
   .catch((error) => {
     console.error("> error trying to connect to mongoDB: ", error.message);
@@ -23,6 +29,8 @@ mongoose
 ```
 
 3- Inicializar Schema in `models/books.js`
+
+Para poder efectuar peticiones a la nuestra colección en Mongo tenemos que crear un Modelo de mongoose. Para hacer esto tenemos que importar desde mongoose la Clase `Schema`, luego creamos el modelo con `new Schema()`, el parámetro que le pasamos e la nueva instancia es el modelo del nuestro documento, que en este caso va a ser un libro con titulo, autor, año y isbn. 
 
 ```js
 const mongoose = require("mongoose");
@@ -59,7 +67,13 @@ module.exports = Books;
 require("./configs/db");
 ```
 
+No es obligatorio poner exports para import con [require](https://nodejs.org/es/knowledge/getting-started/what-is-require/) una parte de código. [Stack Overflow](https://stackoverflow.com/a/38172616/9095807)
+
 5- Crear rutas in `routes/books/index.js`
+
+Un objeto `router` es una instancia aislada de middleware y rutas. Puede pensar en ella como una “miniaplicación”, capaz solo de realizar funciones de middleware y enrutamiento. Cada aplicación Express tiene un `router` de aplicaciones incorporado.
+
+Un enrutador se comporta como el middleware en sí mismo, por lo que puede usarlo como argumento para `app.use()` o como argumento para el método `use()` de otro enrutador.
 
 ```js
 const router = require("express").Router();
