@@ -1,6 +1,6 @@
 require('../configs/db');
 
-const SongsModel = require('../models/songs.js');
+const SongsModel = require('../models/Songs.js');
 const songs = require('../data/songs.json');
 
 const populateSongCollection = async () => {
