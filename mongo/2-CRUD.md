@@ -39,7 +39,7 @@ Las operaciones de actualización modifican los documentos existentes en una col
 - db.collection.replaceOne()
 
 ```
-db.collection.insertOne(
+db.collection.updateOne(
   { age: { $lt: 18 }},
   { $set: { status: "reject"}}
 )
