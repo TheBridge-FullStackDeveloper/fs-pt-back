@@ -33,7 +33,7 @@ Controlar in mongo shell o en compass si la colección a sido importada correcta
 
 6 - Crear otro modelo `User` con estas propriedades:
 
-⚠️ Esto no es un modelo para el Schema!
+⚠️ Esto no es un modelo para el Schema!!
 ```js
 {
   username: String,
