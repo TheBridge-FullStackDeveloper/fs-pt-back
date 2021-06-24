@@ -9,7 +9,6 @@ app.use(bodyParser.json({ type: 'application/*+json' }))
 
 require('./config/db');
 
-
 /* 
 Aquí estamos importando las rutas y en el metodo use
 le pasamos como primer parametro la path para la URL
