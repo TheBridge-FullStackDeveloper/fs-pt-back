@@ -119,3 +119,22 @@ const result = await BooksModel.findOneAndUpdate(
 ```js
 const result = await BooksModel.findOneAndDelete({ isbn });
 ```
+
+11- Crear relaciones entre colecciones
+1. Crear una propriedad de tipo array que contenga `Schema.Types.ObjectId` [what-is-a-schematype](https://mongoosejs.com/docs/schematypes.html#what-is-a-schematype)
+```
+reviews: [{type: Schema.ObjectId, ref: 'Review'}]
+```
+2. Crear una ruta para poder añadir una librería en los favoritos, para hacer eso tenemos que hacer un push del `bookId` en el array que hemos creado antes en el modelo
+```
+Model.findOneAndUpdate(
+    { user: user._id },
+    { $push: { files: file._id  } },
+    { upsert: true, new: true, true })
+```
+12- Crear Middleware
+
+1. Crear un carpeta `Middleware`
+2. Crear un Middleware para que solo el admin pueda ver sus libros 
+
+13- Crear vista
