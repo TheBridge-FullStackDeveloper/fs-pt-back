@@ -6,7 +6,6 @@ Los modelos de datos efectivos respaldan las necesidades de su aplicación. La c
 
 En mongo no es requerido crear "Schemas" para los documentos. Así que:
 
-
 - No estamos obligados que los documentos de una misma colección tengan los mismos campos
 - Podemos modificar, remover, añadir nuevos campos y cambiar la estructura de los documentos en una misma colección
 
