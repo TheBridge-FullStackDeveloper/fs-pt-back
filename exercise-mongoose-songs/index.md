@@ -44,6 +44,16 @@ Controlar in mongo shell o en compass si la colección a sido importada correcta
 
 8 - Crear una ruta para devolver todas las conciones de una playlist de un usuario utilizando el `.populate()`
 
-Bonus 🏆
+🏆 Bonus
 
 9- Implementar try/catch en todas lar rutas para manejar los errores
+Ejemplo:
+```js
+router.get('/get-books', (req, res) => {
+  try {
+    const result = await Books.find({});
+  } catch (err) {
+    res.status(500).json({ err })
+  }
+})
+```
