@@ -1,15 +1,15 @@
 # Mongoose Songs 🎧
 
-1 - Instalar con npm express, mongoose y body-parser
+## OK 1 - Instalar con npm express, mongoose y body-parser
 
-2 - Dentro de `configs/db.js` crear la conexión con mongoose a la BBDD
+## OK 2 - Dentro de `configs/db.js` crear la conexión con mongoose a la BBDD
 
-1. Añadir la URL a la BBDD
+## OK 1. Añadir la URL a la BBDD
 
-3 - Crear el modelo y el Schema para `Songs` en `./models/Songs.js`
+## OK 3 - Crear el modelo y el Schema para `Songs` en `./models/Songs.js`
 
-1. Importar la clase `Schema` desde mongoose
-2. Crear el modelo para `Song` que respete esta estructura 
+## OK 1. Importar la clase `Schema` desde mongoose
+## OK 2. Crear el modelo para `Song` que respete esta estructura 
 ```
 {
   "artist": "Pharrell Williams",
@@ -18,7 +18,7 @@
   "youtube_id": "Q-GLuydiMe4"
 },
 ```
-4 - Ejecutar el `seeds.js` para rellenar la colección de `Songs` con es te script
+## OK 4 - Ejecutar el `seeds.js` para rellenar la colección de `Songs` con es te script
 ```
 npm run seeds:songs
 ```

@@ -8,7 +8,7 @@ const mongooseConfigs = {
 }
 
 mongoose
-  .connect(/* Añadir URL a mongo*/, mongooseConfigs})
+  .connect('mongodb://localhost:27017/SongsDB', mongooseConfigs)
   .then(() => console.info("> succesfully connected to mongoDB"))
   .catch((error) => {
     console.error("> error trying to connect to mongoDB: ", error.message);
