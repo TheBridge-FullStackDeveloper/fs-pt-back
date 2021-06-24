@@ -43,3 +43,7 @@ Controlar in mongo shell o en compass si la colección a sido importada correcta
 7 - Crear un una ruta para poder añadir una canción en la playlist del usuario
 
 8 - Crear una ruta para devolver todas las conciones de una playlist de un usuario utilizando el `.populate()`
+
+Bonus 🏆
+
+9- Implementar try/catch en todas lar rutas para manejar los errores
