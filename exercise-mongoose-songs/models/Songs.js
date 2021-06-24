@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const {
-    Schema
-} = mongoose;
+const { Schema} = mongoose;
 // Importar Schema desde mongoose
 
 const SongSchema = new Schema({
@@ -11,7 +9,6 @@ const SongSchema = new Schema({
             link: {
                 type: String,
             },
-
             name: {
                 type: String,
             },
