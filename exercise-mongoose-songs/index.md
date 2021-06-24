@@ -30,3 +30,16 @@ Controlar in mongo shell o en compass si la colección a sido importada correcta
 2. POST
 3. PUT
 4. DELETE
+
+6 - Crear otro modelo `User` con estas propriedades:
+
+⚠️ Esto no es un modelo para el Schema!
+```js
+{
+  username: String,
+  playlist: Array<ObjectId>
+}
+```
+7 - Crear un una ruta para poder añadir una canción en la playlist del usuario
+
+8 - Crear una ruta para devolver todas las conciones de una playlist de un usuario utilizando el `.populate()`
