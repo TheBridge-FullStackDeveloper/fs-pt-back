@@ -123,7 +123,7 @@ const result = await BooksModel.findOneAndDelete({ isbn });
 11- Crear relaciones entre colecciones
 1. Crear una propriedad de tipo array que contenga `Schema.Types.ObjectId` [what-is-a-schematype](https://mongoosejs.com/docs/schematypes.html#what-is-a-schematype)
 ```js
-books: [{type: Schema.ObjectId, ref: 'Books'}]
+books: [{type: Schema.Types.ObjectId, ref: 'Books'}]
 ```
 2. Crear una ruta para poder añadir una librería en los favoritos, para hacer eso tenemos que hacer un push del `bookId` en el array que hemos creado antes en el modelo
 ```js
