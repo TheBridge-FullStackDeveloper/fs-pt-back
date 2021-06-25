@@ -24,14 +24,15 @@ npm run seeds:songs
 ```
 Controlar in mongo shell o en compass si la colección a sido importada correctamente
 
-5 - Crear un CRUD para las colección de `Songs` dentro de `./routes/songsRoutes/index.js`
+## OK 5 - Crear un CRUD para las colección de `Songs` dentro de `./routes/songsRoutes/index.js`
 
 1. GET
 2. POST
 3. PUT
 4. DELETE
 
-6 - Crear otro modelo `User` con estas propriedades:
+
+## OK  6 - Crear otro modelo `User` con estas propriedades:
 
 ⚠️ Esto no es un modelo para el Schema!
 ```js
@@ -40,9 +41,9 @@ Controlar in mongo shell o en compass si la colección a sido importada correcta
   playlist: Array<ObjectId>
 }
 ```
-7 - Crear un una ruta para poder añadir una canción en la playlist del usuario
+## OK 7 - Crear un una ruta para poder añadir una canción en la playlist del usuario
 
-8 - Crear una ruta para devolver todas las conciones de una playlist de un usuario utilizando el `.populate()`
+## OK 8 - Crear una ruta para devolver todas las conciones de una playlist de un usuario utilizando el `.populate()`
 
 🏆 Bonus
 
