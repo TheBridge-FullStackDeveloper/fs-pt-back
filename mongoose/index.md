@@ -127,8 +127,14 @@ books: [{type: Schema.Types.ObjectId, ref: 'Books'}]
 ```
 2. Crear una ruta para poder añadir una librería en los favoritos, para hacer eso tenemos que hacer un push del `bookId` en el array que hemos creado antes en el modelo
 ```js
-library.books.push(),
-library.save(),
+router.get("/add-book-to-library/:name/:id", log,async (req, res) => {
+  const { name, id} = req.params;
+  const library = await LibraryModel.findOne({ name })
+  library.books.push(id);
+  await library.save();
+
+  res.send('done');
+});
 ```
 12- Crear Middleware
 
