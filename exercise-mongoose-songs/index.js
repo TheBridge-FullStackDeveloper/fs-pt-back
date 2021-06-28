@@ -1,13 +1,24 @@
+require('./configs/db')
 const express = require('express')
 const app = express()
-const port = 3000
-const bodyParser = require('body-parser')
+const { PORT } = require('./constants')
 
 // parse various different custom JSON types as JSON
 app.use(express.json())
-app.use(bodyParser.json({ type: 'application/*+json' }))
-app.use(/*Importar rutas*/)
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.use(require('./routes'))
+
+app.use((req, res, next) => {
+  next({ info: new Error('path not found') })
+})
+
+app.use(({ status = 400, info }, req, res, next) => {
+  res.status(status).json({
+    success: false,
+    message: info.message,
+  })
+})
+
+app.listen(PORT, () => {
+  console.log(`Example app listening at http://localhost:${PORT}`)
 })

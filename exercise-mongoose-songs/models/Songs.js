@@ -1,8 +1,25 @@
-const mongoose = require("mongoose");
-// Importar Schema desde mongoose
+const mongoose = require("mongoose")
+const { Schema } = mongoose
 
-const SongSchema = new Schema({/*Escribir el modelo del documento aquí*/});
+const SongSchema = new Schema({
+    artist: {
+        type: String,
+        required: true,
+    },
+    link: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    youtube_id: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+})
 
-const Songs = mongoose.model(/*Escribir nombre de la colección*/, SongSchema);
-
-module.exports = Songs;
+module.exports = mongoose.model('Songs', SongSchema)
