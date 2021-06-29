@@ -3,7 +3,6 @@ const express = require('express')
 const app = express()
 const { PORT } = require('./constants')
 
-// parse various different custom JSON types as JSON
 app.use(express.json())
 
 app.use(require('./routes'))

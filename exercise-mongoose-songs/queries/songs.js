@@ -1,7 +1,11 @@
 const SongModel = require('../models/Songs')
 
 const getAllSongs = async () => {
-    return await SongModel.find({}, { _id: 0, __v: 0 })
+    try {
+        return await SongModel.find({}, { _id: 0, __v: 0 })
+    } catch(error) {
+        return false
+    }
 }
 
 const addNewSong = async ({ artist, name, link, youtube_id }) => {
@@ -20,9 +24,15 @@ const deleteSong = async id => {
     return await SongModel.findOneAndDelete({ youtube_id: id })
 }
 
+const getSongId = async youtube_id => {
+    return await SongModel.findOne(
+        { youtube_id }).select('_id')
+}
+
 module.exports = {
     getAllSongs,
     addNewSong,
     editSong,
     deleteSong,
+    getSongId,
 }

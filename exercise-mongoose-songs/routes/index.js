@@ -1,8 +1,6 @@
-// Importar routes desde express
 const router = require('express').Router()
 
-// Crear la ruta para las songs
 router.use('/songs', require('./songs'))
+router.use('/users', require('./users'))
 
-// Exportar la ruta
 module.exports = router
