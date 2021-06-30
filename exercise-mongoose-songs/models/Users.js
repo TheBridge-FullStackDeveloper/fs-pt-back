@@ -7,6 +7,9 @@ const UserSchema = new Schema({
         required: true,
         unique: true,
     },
+    profile_image: {
+        type: String,
+    },
     playlist: [
         {
             type: Schema.Types.ObjectId,

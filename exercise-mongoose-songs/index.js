@@ -1,9 +1,11 @@
 require('./configs/db')
 const express = require('express')
+const path = require('path')
 const app = express()
 const { PORT } = require('./constants')
 
 app.use(express.json())
+app.use('/public', express.static(path.join(__dirname, 'uploads')))
 
 app.use(require('./routes'))
 

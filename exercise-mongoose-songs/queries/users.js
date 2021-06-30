@@ -1,8 +1,12 @@
 const UserModel = require('../models/Users')
 
-const createUser = async username => {
-    const { username: user, playlist } = await UserModel.create({ username })
-    return { username: user, playlist }
+const createUser = async ({ username, profile_image }) => {
+    const {
+        username: user,
+        playlist,
+        profile_image: pic } = await UserModel
+            .create({ username, profile_image })
+    return { username: user, playlist, profile_image: pic }
 }
 
 const addToPlaylist = async (username, songId) => {
