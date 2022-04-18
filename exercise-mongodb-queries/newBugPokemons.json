@@ -1,0 +1,70 @@
+[{
+    "id": 811,
+    "name": {
+        "english": "Firebug",
+        "japanese": "ギャラドスシャイニー",
+        "chinese": "暴鲤龙闪亮",
+        "french": "Bixo"
+    },
+    "type": [
+        "Fire",
+        "Bug"
+    ],
+    "base": {
+        "HP": 20,
+        "Attack": 20,
+        "Defense": 20,
+        "Sp": {
+            " Attack": 20,
+            " Defense": 20
+        },
+        "Speed": 20
+    }
+},
+{
+    "id": 812,
+    "name": {
+        "english": "Waterbug",
+        "japanese": "ギャラドスシャイニー",
+        "chinese": "暴鲤龙闪亮",
+        "french": "Bixe"
+    },
+    "type": [
+        "Water",
+        "Bug"
+    ],
+    "base": {
+        "HP": 20,
+        "Attack": 20,
+        "Defense": 20,
+        "Sp": {
+            " Attack": 20,
+            " Defense": 20
+        },
+        "Speed": 20
+    }
+},
+{
+    "id": 813,
+    "name": {
+        "english": "GrassBug",
+        "japanese": "ギャラドスシャイニー",
+        "chinese": "暴鲤龙闪亮",
+        "french": "Bixa"
+    },
+    "type": [
+        "Grass",
+        "Bug"
+    ],
+    "base": {
+        "HP": 20,
+        "Attack": 20,
+        "Defense": 20,
+        "Sp": {
+            " Attack": 20,
+            " Defense": 20
+        },
+        "Speed": 20
+    }
+}
+]
