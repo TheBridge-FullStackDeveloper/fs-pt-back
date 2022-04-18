@@ -69,7 +69,7 @@ db.myCollection.find().pretty()
 
 añadir varios elementos:
 ```
-db.myNewDatabase.insertMany([
+db.myNewCollection.insertMany([
    { item: "journal", qty: 25, status: "A", size: { h: 14, w: 21, uom: "cm" }, tags: [ "blank", "red" ], dim_cm: [30, 45] },
    { item: "notebook", qty: 50, status: "A", size: { h: 8.5, w: 11, uom: "in" }, tags: [ "red", "blank" ], dim_cm: [0, 25] },
    { item: "paper", qty: 10, status: "D", size: { h: 8.5, w: 11, uom: "in" }, tags: [ "red", "blank", "plain" ], dim_cm: [100, -25] },
