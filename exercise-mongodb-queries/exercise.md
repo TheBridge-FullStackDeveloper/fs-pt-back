@@ -26,11 +26,11 @@ mongoimport --db {databaseName} --collection {collectionName} --file {fileName}.
 
   7. Muestra el nombre, velocidad e id del top 5 de los pokemons más rápidos de la segunda generación (ids: 152 - 251)
 
-  8. Crea un Gyarados Shiny que tenga todos los stats a 1000 y sea de tipo Agua/Dragón
+  8. Crea un Gyarados Shiny que tenga todos los stats a 100 y sea de tipo Agua/Dragón
 
   9. Crea 3 Pokemon bicho que tengan 20 puntos de stat y cuyos nombres serán Firebug, Waterbug y Grassbug. Los tipos serán Fuego/Bicho, Agua/Bicho y Planta/Bicho. No olvidéis los ids de cada uno!
 
-  10. Consulta todos los pokemons que tengan 1000 puntos de velocidad y 20 puntos de velocidad, ataque base, defensa base y vida
+  10. Consulta todos los pokemons que tengan 100 puntos de velocidad y 20 puntos de ataque base, defensa base y vida
 
   11. Actualiza el pokemon Blastoise para que sea shiny (cámbiale el nombre y auméntale la vida a 700 puntos y el resto de stats a 500
 
