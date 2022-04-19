@@ -14,7 +14,7 @@ mongoimport --db {databaseName} --collection {collectionName} --file {fileName}.
 ## Ejercicios (Nunca muestres los ObjectID)
 
 //NOTA: FILTER, PROJECT, SORT, LIMIT son menciones a sus respectivas casillas en Mongo Compass
-
+TODO EL EJERCICIO ESTÁ HECHO EN COMPASS EXCEPTO EL ÚLTIMO APARTADO
 
   1. Muestra los nombres y el id de los primeros 151 pokemons
   FILTER: ( { id: { $lte: 150 } } )
@@ -64,14 +64,14 @@ mongoimport --db {databaseName} --collection {collectionName} --file {fileName}.
 
 
 
-  10. Consulta todos los pokemons que tengan 1000 puntos de velocidad y 20 puntos de velocidad, ataque base, defensa base y vida
+  10. Consulta todos los pokemons que tengan 100 puntos de velocidad y 20 puntos de ataque base, defensa base y vida
+
 
   11. Actualiza el pokemon Blastoise para que sea shiny (cámbiale el nombre y auméntale la vida a 700 puntos y el resto de stats a 500
-  Editado directamente en Mongo Compass: 'Ej 11 Blastoise la tortuga'
+  Editado directamente en Mongo Compass, adjunto: 'Ej 11 Blastoise la tortuga'
 
 
 
   12. Elimina a todos los pokemons que tengan menos de 100 de ataque base
 
-  db.Pokemon.deleteMany({ "base.Attack": { $lt: 100} })
-  //No sé si se puede borrar muchos documentos a la vez en el Compass, no encontré la forma así que lo hice en la shell
+  db.Pokemon.deleteMany({ "base.Attack": { $lt: 100} }) //shell
