@@ -12,14 +12,46 @@ router.get("/all", async (req, res, next) => {
 });
 
 router.get("/borough/:borough", async (req, res, next) => {
-    const restaurants = await RestaurantModel.find();
     const { borough } = req.params;
-
-    const localRestaurants = restaurants.filter(restaurant => restaurant.borough === borough)
+    const restaurants = await RestaurantModel.find({borough});
 
     res.status(200).json({
         success: true,
-        [`${borough}_Restaurants`]: localRestaurants
+        [`${borough} Restaurants`]: restaurants
+    });
+});
+
+router.get("/cuisine/:cuisine", async (req, res, next) => {
+    const { cuisine } = req.params;
+    const borough = req.query.borough;
+    let restaurants = await RestaurantModel.find({cuisine});
+
+    if (borough) {
+        restaurants = restaurants.filter(restaurant => restaurant.borough === borough);
+    };
+
+    res.status(200).json({
+        success: true,
+        [`${cuisine} cuisine restaurants:`]: restaurants
+    });
+});
+
+router.get("/first/:number", async (req, res, next) => {
+    const { number } = req.params;
+    let restaurants = await RestaurantModel.find().limit(number)
+
+    res.status(200).json({
+        success: true,
+        [`First ${number} restaurants:`]: restaurants
+    });
+});
+
+router.get("/zipcode", async (req, res, next) => {
+    let restaurants = await RestaurantModel.find({ "address.zipcode": 11374 })
+
+    res.status(200).json({
+        success: true,
+        Restaurants_with_11374_zipcode: restaurants
     });
 });
 

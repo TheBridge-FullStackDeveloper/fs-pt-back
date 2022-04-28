@@ -17,19 +17,19 @@ Crear un servidor **DESDE ZERO** dentro del path `exercise-mongoose-restaurants`
 
 Crea una ruta para poder efectuar estas queries:
 
-1. Muestra todos los restaurantes en el barrio de Manhattan
+1. Muestra todos los restaurantes en el barrio de Manhattan ✅
 
-2. Muestra todos los restaurantes en los barrios de Queens y Brooklyn
+2. Muestra todos los restaurantes en los barrios de Queens y Brooklyn ✅
 
-3. Muestra todos los restaurantes de comida americana
+3. Muestra todos los restaurantes de comida americana ✅
 
-4. Muestra todos los restaurantes de comida americana en el barrio de Queens
+4. Muestra todos los restaurantes de comida americana en el barrio de Queens ✅
 
-5. Muestra solo los nombres de los restaurantes de comida Jewish/Kosher
+5. Muestra solo los nombres de los restaurantes de comida Jewish/Kosher ✅
 
-6. Muestra solo los 10 primeros restaurantes
+6. Muestra solo los 10 primeros restaurantes ✅
 
-7. Muestra todos los restaurantes cuyo código postal sea 11374
+7. Muestra todos los restaurantes cuyo código postal sea 11374 ✅
 
 8. Muestra todos los restaurantes que tengan grado A y dos puntuaciones (scores = 2)
 
