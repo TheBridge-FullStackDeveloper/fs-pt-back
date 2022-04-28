@@ -11,23 +11,21 @@ const restaurantSchema = new Schema({
     borough: String,
     cuisine: String,
     grades: [ { 
-        date: {
-            $date: Number
-        },
+        date: Date,
         grade: String,
         score: Number,
     }],
     name: {
         type: String,
-        required: true,
+        //required: true,
     },
     restaurant_id: {
         type: String,
-        required: true,
+        //required: true,
         unique:true,
     },
 })
 
-const RestaurantModel = mongoose.model("Restaurant", restaurantSchema);
+const RestaurantModel = mongoose.model("restaurants", restaurantSchema);
 
 module.exports = RestaurantModel;

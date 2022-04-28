@@ -4,11 +4,11 @@ const PORT = 3000;
 require("./configs/db");
 
 app.use(express.json());
-/*
+
 app.use("/", require("./routes"))
-*/
+
 app.use( (error, req, res, next) => {
-    next(new Error("path not found"));
+    next(new Error(error));
 });
 
 app.use((error, req, res) => {

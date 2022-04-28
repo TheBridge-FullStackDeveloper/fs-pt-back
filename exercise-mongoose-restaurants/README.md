@@ -9,9 +9,9 @@ Crear un servidor **DESDE ZERO** dentro del path `exercise-mongoose-restaurants`
 
 ⚠️ Puntos fundamentales:
 
-1. Crea un `seed.js` para importar los restaurantes (del `./restaurant.json`) en la BBDD
+1. Crea un `seed.js` para importar los restaurantes (del `./restaurant.json`) en la BBDD ✅
 
-2. Crear rutas para poder efectuar un CRUD de la colección de restaurantes
+2. Crear rutas para poder efectuar un CRUD de la colección de restaurantes ✅
 
 ## Bonus 🏆
 
