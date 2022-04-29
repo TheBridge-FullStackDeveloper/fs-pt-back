@@ -55,6 +55,15 @@ router.get("/zipcode", async (req, res, next) => {
     });
 });
 
+router.get("/top", async (req, res, next) => {
+    let restaurants = await RestaurantModel.find({ $and: [{"grades.grade": "A"}, {"grades.score": 2}]})
+
+    res.status(200).json({
+        success: true,
+        Restaurants_with_11374_zipcode: restaurants
+    });
+});
+
 router.post("/create", async (req, res, next) => {
     const newRestaurant = req.body;
     const update = await RestaurantModel.create(newRestaurant);

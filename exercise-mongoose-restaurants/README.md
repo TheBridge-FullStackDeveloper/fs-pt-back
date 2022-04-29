@@ -31,6 +31,6 @@ Crea una ruta para poder efectuar estas queries:
 
 7. Muestra todos los restaurantes cuyo código postal sea 11374 ✅
 
-8. Muestra todos los restaurantes que tengan grado A y dos puntuaciones (scores = 2)
+8. Muestra todos los restaurantes que tengan grado A y dos puntuaciones (scores = 2) ✅
 
 9. Muestra los nombres y el código postal de todos los restaurantes cuyo código postal sea inferior a 10500 y ordenados de mayor a menor (por código postal)
